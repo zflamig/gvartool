@@ -1,0 +1,47 @@
+VERBOSE     -h more verbose description of the following options
+INSTRUMENT  -i <instrument>  	       default: none
+                [none imager sounder iIcse 
+		 sIcse iSpacelookStats iNav sNav]
+ FILETYPE   -f <file>                  default: none
+                [none bin jpeg tiff tifftile tiffstrip]
+ TIMESTAMP  -T <stamp>                 default: fromFilename
+                [fromFilename framestart region]
+ START      -s <VISpixel,VISline>      default: from gvar
+ END        -e <VISpixel,VISline>      default: from gvar
+ REGION     -r <CentralVISPixel,CentralVISLine,Pixels,Lines>  
+				       default: from gvar
+ REGION     -R <CentralVISLongitude,CentralVISLatitude,Pixels,Lines>  
+				       default: from gvar
+ AREA       -A <[+/-] Mbytes>          default: inactive 
+ LINKNAME   -l toggle link to latest   default: none
+ CHANNEL    -c <channel>               default: all
+                [all 1 2 .. ]
+  WORDTYPE  -w <wordtype>              default: none
+                [none char uchar short ushort int uint float double]
+  UNITS     -u <units>                 default: counts
+                [counts radiance     
+                 tstar tscene modeA    (for IR ) 
+                 albedo albedo2]       (for VIS)
+  GAIN      -g <gain> {y=((x-b)/g)^G}  default: 1.0
+  BIAS      -b <bias>                  default: 0.0
+  GAMMA     -G <gamma>                 default: 1.0
+  XSCALE    -x <pixels>                default: 1.0
+  YSCALE    -y <lines>                 default: 1.0
+  DIRECTORY -p <output_path>           default: ./   
+  HOURS     -H <start,end>             default: 0,23
+                GMT hours
+  MAP       -M <map>                   default: none  
+                  [none grid1 grid2 grid12 ] 
+  MAPVALUE  -m <counts>                default: 1023 
+  COMPRESS  -C <scheme|QUALITY>        default: none|75
+		for tiff:
+                [cittrle ccittfax3 ccittrlew lzw
+                 next packbits thunderscan pixarfilm]
+		for jpeg: QUALITY [0 - 100] 
+SNOOZE      -S <directory>             default: off 
+DEBUG       -D <mode>                  default: none 
+               [none header lineDoc block0time SAD CRC parity]
+COUNTER     -K toggle counter off      default: on
+CMDFILE     -F <fileName>              default: none
+XECUTE      -X <scriptName>            default: none
+PRIORITY    -P                         default: off

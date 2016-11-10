@@ -1,0 +1,343 @@
+GOES data processing software 
+
+Disclaimer This software is provided AS IS.  
+Neither the author or NASA is responsible for any 
+damage incurred directly or indirectly 
+through the use of this software.
+
+Om Sharma, RDC, version @ AUG 13 1995
+
+The gvar program allows one to convert GVAR data
+(recorded from a goes satellite) into radiometrically
+calibrated images.
+
+To obtain LIVE goes images: 
+
+1) Identify the file containing raw data 
+  Data broadcast from the goes8 satellite is captured by
+  the antenna on building-22@gsfc. A roving archive of the 
+  last 8-12 hours of data is mantained on local disks attached
+  to the machine goessun.gsfc.nasa.gov. 
+  If you have automount running on your system you can list all 
+  the available data using the following command: 
+
+>ls -tlr /net/goessun-f.gsfc.nasa.gov/Goes8/*/*
+
+2) Use the gvar parsing program to parse the raw data to 
+ a suitable format for your use.
+
+Each of the options are explained here in greater detail
+
+
+VERBOSE     -h more verbose description of the following options
+
+-----------------------------------------------------------------
+INSTRUMENT  -i <instrument>  	       default: none
+                [none imager sounder iIcse 
+		 sIcse iSpacelookStats iNav sNav]
+Focus attention to specified instrument.  
+Once the user has specified an instrument, all further arguments
+will apply to that instrument, unless the user specifically 
+changes the instrument. 
+eg: gvar -i imager -c all -f tiff -i sounder -c all -f bin
+all the imager channels are to be written in the
+tiff format and all the sounder files written in binary format.
+selecting the same instrument again will produce a new set of output
+files. 
+
+NONE:
+  No instrument specified.
+IMAGER:
+  Specify imager. Imager has 5 channels (VIS->Ch1).
+SOUNDER:
+  Specify sounder. Sounder has 19 channels (VIS->Ch19).
+IICSE:
+  Make ASCII file contatining imager instrument compensation and
+  servo error terms.
+SICSE:
+  Make ACSII file containing sounder instrument compensation and 
+  servo error terms.
+ISPACELOOKSTATS
+  Make ASCII files containing imager space look statistics 
+  for all channel
+INAV:
+  Print Navigation paramters from block 0 (for imager)
+SNAV:
+  Print Navigation parameters from block 11 (for sounder)              
+-----------------------------------------------------------------
+ FILETYPE    -f <file>                 default: none
+                [none bin jpeg tiff tifftile tiffstrip]
+Specify an output filetype for selected instrument.
+
+NONE:  Do not write any file.
+BIN :  Binary files (The width, height and datatype will be 
+       appended to the filename.)
+JPEG:     JPEG encoded files (CAUTION: jpeg does only uchar )  
+TIFF:     Tiff 6.0 file. Regular tiff.
+TIFFTILE: Tiff 6.0 tile file. Each tile is  (128x128).
+TIFFSTRIP:Tiff 6.0 strips file. Each strip is (Xsize x 128 ).
+-----------------------------------------------------------------
+ TIMESTAMP  -T <stamp>                 default: fromFilename
+                [fromFilename framestart region]
+Controls the naming of <imager/sounder> files.
+The names have the following syntax: 
+  <timestamp>.<satel><instr><ch>.<units>.<file>
+eg: 9412161212.G8I1.albdo.ttif
+
+FROMFILENAME: 
+	<timestamp> set to the name of the file being processed.
+FRAMESTART :
+	<timestamp> set to the gmt time at the start of the frame.
+REGION: 
+	<timestamp> set to the gmt time at the start of the region
+-----------------------------------------------------------------
+ START      -s <VISpixel,VISline>      default: from gvar
+Specify that the (imager/sounder) sector start at (VISpixel,VISline). 
+If this argument is not supplied, or if -1 is suppled as the 
+argument, information about start of frame is obtained from GVAR.
+-----------------------------------------------------------------
+ END        -e <VISpixel,VISline>      default: from gvar
+Specify that the (imager/sounder) sector end at (VISpixel,VISline). 
+If this argument is not supplied, or if -1 is suppled as the 
+argument, information about end of frame is obtained from GVAR.
+-----------------------------------------------------------------
+ REGION     -r <CentralVISPixel,CentralVISLine,Pixels,Lines>  
+				       default: from gvar
+Specify that the (imager/sounder) sector is centered  at 
+(CentralVISpixel,CentralVISline) and of size (Pixels, Lines).
+This is equivalent to specifying
+-s CentralVISpixel-Pixels/2,CentralVISline-Lines/2
+-e CentralVISpixel+Pixels/2,CentralVISline+Lines/2
+
+-----------------------------------------------------------------
+ REGION     -R <CentralVISLongitude,CentralVISLatitude,Pixels,Lines>  
+				       default: from gvar
+A best guess of the conversion from 
+	CentralVISLongitude -> CentralVISPixel
+    and CentralVISLatitude  -> CentralVISLine is applied. 
+Specify that the (imager/sounder) sector is centered  at 
+(CentralVISpixel,CentralVISline) and of size (Pixels, Lines).
+This is equivalent to specifying
+-s CentralVISpixel-Pixels/2,CentralVISline-Lines/2
+-e CentralVISpixel+Pixels/2,CentralVISline+Lines/2
+-----------------------------------------------------------------
+ AREA       -A <[+/-] Mbytes>          default: inactive 
+Maximum area of visible image in MegaBytes. 
+Process sector only if the maximum allowable area of the 
+visible image is greater than / less than 
+specified Mega Bytes. 
+-----------------------------------------------------------------
+ LINKNAME    -l toggle link to latest  default: none
+Create a link to the lastest file processed and call it
+<dirname>/latest.<fileType>. 
+-----------------------------------------------------------------
+ CHANNEL     -c <channel>              default: all
+                [all 1 2 .. ]
+Focus attention to specified channel
+Once the user has specified a channel all further arguments will 
+apply to that channel, unless the user specifically changes the 
+channel. 
+eg: gvar -i imager -c 1 -f tiff -c 2 -f bin
+imager channel 1 is to be written tiff format and channel 2 in
+the binary format.
+-----------------------------------------------------------------
+  HOURS      -H <start,end>            default: 0,23
+                GMT hours
+Start,end time in GMT hours.
+Images that do not start between these hours will not be processed.
+-----------------------------------------------------------------
+  WORDTYPE   -w <wordtype>             default: none
+                [none char uchar short ushort int uint float double]
+Specify a filetype for selected instrument and channel.
+Data
+Type  Bytes   MIN                                MAX
+CHAR    1  ( -128                  to            127 )
+UCHAR   1  (   0                   to            255 )
+SHORT   2  ( -32768                to           32767)
+USHORT  2  (   0                   to          65535 )
+INT     4  ( -214748367            to      2147483647)
+UINT    4  ( 0                     to       429496729)
+FLOAT   4  ( 1.17549435E-38F       to  3.40282347E+38)
+DOUBLE  8  ( 2.2250738585072014E-308 1.7976931348623157E+308 )
+-----------------------------------------------------------------
+  UNITS      -u <units>                default: counts
+                [counts radiance     
+                 tstar tscene modeA    (for IR ) 
+                 albedo albedo2]       (for VIS)
+Specify the output units for selected instrument and channel.
+All conversion calculations are done in double precision and
+are truncated to user specified units.
+COUNTS:   
+  GVAR natural units. No conversions performed.
+RADIANCE: (units erg/cm2/sec/steradian/cm-1)
+  Apply GVAR specified coefficients to convert from counts 
+  to radiance. 
+TSTAR: Brightness Temperature (units K )
+  Apply inverse planck function to compute the brighness temperature.
+  First counts are converted to radiance. Then, NOAA specified 
+  wavenumbers for (imager/sounder) channels are utilized in the 
+  inverse planck function to obtain brighness temperature.
+  CAUTION: This will produce 'strange' results for the visible
+  channels
+TSCENE: Scene Temperature( units K )
+  Apply NOAA stipuated corrections to brighness temperature.
+  CAUTION: This will produce 'strange' results for the visible
+  channels
+MODEA: ( units char 0-255)
+  NOAA scheme to convert scene temperatures to single byte values.
+    double val = SCENE_TEMPERATURE(kounts);
+    if ( val < 242) amode = 418 - MAX(val,163);
+    else amode = 660 - 2* MIN(val,330) ;
+  CAUTION: This will produce meaningless results for the visible
+  channels
+ALBEDO: ( units %albedo )
+  Apply GVAR specified coefficients to convert from counts to albedo.
+  CAUTION: This will produce meaningless results for the IR
+  channels  
+ALBEDO2: (units %albedo)
+  Apply GVAR specified coefficients to convert from counts to albedo.
+  Use Spacelook statistics to determine the instrument bias. 
+  CAUTION: This will produce meaningless results for the IR
+  channels.
+-----------------------------------------------------------------
+  GAIN       -g <gain> {y=((x-b)/g)^G} default: 1.0
+Specify the output gain for selected instrument and channel.
+All conversion calculations are done in double precision and
+are truncated to user specified units.
+The following equation is used to specify the gain and bias
+  y = [(x-bias)/gain]^Gamma
+-----------------------------------------------------------------
+  BIAS       -b <bias>                 default: 0.0
+Specify the output bias for selected instrument and channel.
+All conversion calculations are done in double precision and
+are truncated to user specified units.
+The following equation is used to specify the gain and bias
+  y = [(x-bias )/gain]^Gamma
+-----------------------------------------------------------------
+  GAMMA      -G <gamma>                default: 1.0
+Specify the output gamma for selected instrument and channel.
+All conversion calculations are done in double precision and
+are truncated to user specified units.
+The following equation is used to specify the gain and bias
+  y = [(x-bias )/gain]^Gamma
+-----------------------------------------------------------------
+  XSCALE     -x <pixels>               default: 1.0
+Specify pixel scale factor for selected instrument and channel.
+A nearest neigbour scheme for scaling is implemented.
+The scale can be any real number. A number greater than one
+produces supersampling and a number less than one subsampling.
+Negative numbers are allowed as a convenience to the user.
+Negative numbers are interpreted as 1/|x|
+eg: -x-0.25 is identical to  -x4
+-----------------------------------------------------------------
+  YSCALE     -y <lines>                default: 1.0
+Specify line scale factor for selected instrument and channel.
+A nearest neigbour scheme for scaling is implemented.
+The scale can be any real number. A number greater than one
+produces supersampling and a number less than one subsampling.
+Negative numbers are allowed as a convenience to the user.
+Negative numbers are interpreted as 1/|y|
+eg: -y-0.25 is identical to  -y4
+-----------------------------------------------------------------
+  DIRECTORY  -p <output_path>          default: ./   
+Prepend the specified string to the filename. 
+-----------------------------------------------------------------
+  MAP        -M <map>                  default: none  
+                  [none grid1 grid2 grid12 ] 
+Burn the GVAR specified map pixels into the output data. 
+NONE: Do not use map pixels
+GRID1: Use grid set 1
+GRID2: Use grid set 2
+GRID12: Use grid set 1 and 2 
+-----------------------------------------------------------------
+  MAPVALUE   -m <counts>               default: 1023 
+The value of the emborsed pixel in raw counts. 
+-----------------------------------------------------------------
+  COMPRESS   -C <scheme|QUALITY>       default: none|75
+		for tiff:
+                [cittrle ccittfax3 ccittrlew lzw
+                 next packbits thunderscan pixarfilm]
+		for jpeg: QUALITY [0 - 100] 
+The specified compression scheme (if implemented) should
+be applied. For TIFF specify one of cittrle ccittfax3 ccittrlew lzw
+next packbits thunderscan pixarfilm. For JPEG an integer 
+number indicating quality. 0->No compression, 100->Max compression.
+-----------------------------------------------------------------
+SNOOZE      -S <directory>             default: off 
+After all the specified raw files are processed, wake up every 
+minute and look for new files to process in the directory[s] 
+specified. This option can be specified more than once to include
+multiple directories. 
+-----------------------------------------------------------------
+DEBUG       -D <mode>                  default: none 
+                [none header lineDoc block0time SAD CRC parity]
+Print debug information in tabular form to file named DebugFile 
+HEADER    :all valid block headers
+LINEDOC   :block headers and imager line documentation.
+BLOCK0TIME:various time strings associated with block0.
+SAD       :valid block headers & sounder auxillary data header.
+CRC       :CRC check each block and report.  
+parity    :questionable parity check for each block
+-----------------------------------------------------------------
+COUNTER     -K toggle counter off      default: on
+Turn the counter off. The counter marks % unread data.
+-----------------------------------------------------------------
+CMDFILE     -F <fileName>              default: none
+Read the commands from fileName.
+This option must be the first one specified to take effect.
+-----------------------------------------------------------------
+XECUTE      -X <scriptName>            default: none
+The script pointed to by <scriptName> will be executed before 
+the next new rawGvar file is processed.
+-----------------------------------------------------------------
+PRIORITY    -P                         default: off
+Turn on priority frame processing.  When on, frames of different
+priorities are processed as separate streams of data.  When off,
+all frames are treated as the same priority, in one stream.
+-----------------------------------------------------------------
+File1
+The filename of the recorded GVAR data. 
+The last 10 hours of data is recorded on NFS mountable
+disks on goessun-f.gsfc.nasa.gov. If you have automount
+running on you system, you can list all available data 
+files by typing the following command: 
+> ls -lt /net/goessun-f.gsfc.nasa.gov/Goes8/*/*
+-----------------------------------------------------------------
+File2
+The filename of more recorded GVAR data.
+-----------------------------------------------------------------
+
+If you have questions e-mail:sharma@climate.gsfc.nasa.gov
+
+
+Usage examples for gvar: 
+1. IMAGER, ROUND EARTH AT LOW RESOLUTION, 
+  10*ALBEDO AND MODEA IN UNSIGNED CHAR , JPEG FORMAT
+  COREGISTER DATA FOR ALL CHANNELS
+
+gvar -i imager -c all -f jpeg \
+-x-7 -y-4 \
+-u modea -w uchar \
+-c 3 -x-7 -y-2  \
+-c 1 -u albedo -g 0.25 -x-28 -y-16 \
+/net/goessun-f/Goes8/d10.raw/<fileName>
+
+
+2. IMAGER FULL RESOLUTION, 10*ALBEDO AND 10*TSTAR 
+  IN SHORT INTEGERS, TIFF FORMAT, SELECTING EASTERN 
+  USA AND ATLANTIC (E.G. HURRICANE GORDON)
+
+gvar -i imager -f tiff \
+-s 16000,3500 -e 20000,6000 \
+-c all -u tstar -w ushort -g 0.10 \
+-c 1 -u albedo -g 0.10 \
+/net/goessun-f/Goes8/d10.raw/<fileName>
+
+3.SOUNDER FULL RESOLUTION, 10*TSTAR , COUNTS
+  IN SHORT INTEGERS, TIFF FORMAT.
+
+gvar -i sounder -f tiff -c all -w ushort \
+-u tstar -g 0.10 \
+-c 18 -u counts \
+/net/goessun-f/Goes8/d10.raw/<fileName>
+

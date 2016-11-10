@@ -1,0 +1,351 @@
+1	0
+2006	347	17	45	49	628	0	Current Time
+2557	Northern-most visible detector scan line in current scan
+10065	Western-most visible pixel in current frame
+21480	Eastern-most visible pixel in current frame
+2557	Northern-most visible pixel in current frame
+6488	Southern-most visible pixel in current frame
+D003	IMC identifier 
+-2.35619	Reference Longitude
+0	Reference Radial Distance
+0	Reference Radial Latitude
+0	Reference Orbit Yaw
+0	ReferenceAttitudeRoll
+0	Reference Attitude Pitch
+0	ReferenceAttitudeYaw
+0612130800	Epoch Date
+9999	IMC enable from epoch
+0	CompensationRoll
+0	Compensation Pitch
+0	Compensation Yaw
+-0.0084212	Change Longitude 0
+-1.1221e-06	Change Longitude 1
+2.9563e-07	Change Longitude 2
+-0.000331704	Change Longitude 3
+0.000304824	Change Longitude 4
+1.98484e-06	Change Longitude 5
+-9.33984e-07	Change Longitude 6
+-5.83885e-06	Change Longitude 7
+6.8581e-06	Change Longitude 8
+4.57973e-06	Change Longitude 9
+1.51358e-05	Change Longitude 10
+4.37418e-07	Change Longitude 11
+5.95537e-07	Change Longitude 12
+0.221634	Change Radial Distance 0
+13.9861	Change Radial Distance 1
+12.8527	Change Radial Distance 2
+-0.0836893	Change Radial Distance 3
+-0.0393809	Change Radial Distance 4
+0.246191	Change Radial Distance 5
+0.289167	Change Radial Distance 6
+-0.193101	Change Radial Distance 7
+0.638191	Change Radial Distance 8
+-0.0184435	Change Radial Distance 9
+0.0251104	Change Radial Distance 10
+-3.1823e-07	Change Geocoentric Latitude 0
+-9.45487e-07	Sine Orbit Yaw 0
+0.000864142	Change Geocoentric Latitude 1
+-0.000864141	Sine Orbit Yaw 1
+-0.00185332	Change Geocoentric Latitude 2
+-0.00185332	Sine Orbit Yaw 2
+-8.99481e-07	Change Geocoentric Latitude 3
+8.99481e-07	Sine Orbit Yaw 3
+2.6786e-07	Change Geocoentric Latitude 4
+2.6786e-07	Sine Orbit Yaw 4
+-2.81525e-06	Change Geocoentric Latitude 5
+2.81525e-06	Sine Orbit Yaw 5
+8.23338e-06	Change Geocoentric Latitude 6
+8.23338e-06	Sine Orbit Yaw 6
+-5.79099e-05	Change Geocoentric Latitude 7
+5.79099e-05	Sine Orbit Yaw 7
+-2.4896e-05	Change Geocoentric Latitude 8
+-2.4896e-05	Sine Orbit Yaw 8
+0.00436189	Daily Solar Rate
+-480	Exponential Start From Epoch
+
+Roll Angle
+0	Exponential Magnitude
+60	Exponential Time Constant
+-0.000663881	Constant Mean Attitude Angle
+8	Number of Sinusoidals per Angle
+0.000295943	 Magnitude
+0.199182	 Phase
+ 0.000101868	 Magnitude
+1.37371	 Phase
+ 4.32412e-05	 Magnitude
+-0.0501523	 Phase
+ 1.65929e-05	 Magnitude
+0.963752	 Phase
+ 3.77474e-05	 Magnitude
+-2.33658	 Phase
+ 6.61134e-06	 Magnitude
+-2.66811	 Phase
+ 1.12059e-06	 Magnitude
+0.18551	 Phase
+ 6.6266e-06	 Magnitude
+0.323445	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	Number of Monomial Minusoids
+0	Order of Applicable
+0	Order of
+0	 Magnitude
+0	 Phase
+ 0	Angle of epoch where monomial is zero
+0	Order of Applicable
+0	Order of
+0	 Magnitude
+0	 Phase
+ 0	Angle of epoch where monomial is zero
+0	Order of Applicable
+0	Order of
+0	 Magnitude
+0	 Phase
+ 0	Angle of epoch where monomial is zero
+0	Order of Applicable
+0	Order of
+0	 Magnitude
+0	 Phase
+ 0	Angle of epoch where monomial is zero
+
+Pitch Angle
+0	Exponential Magnitude
+60	Exponential Time Constant
+-5.81132e-05	Constant Mean Attitude Angle
+8	Number of Sinusoidals per Angle
+0.000303461	 Magnitude
+0.228872	 Phase
+ 0.00010595	 Magnitude
+-0.953799	 Phase
+ 1.46608e-05	 Magnitude
+-2.37717	 Phase
+ 2.35282e-05	 Magnitude
+2.34595	 Phase
+ 1.14e-05	 Magnitude
+1.31623	 Phase
+ 4.89528e-06	 Magnitude
+1.91529	 Phase
+ 4.51675e-06	 Magnitude
+-0.795812	 Phase
+ 5.08657e-06	 Magnitude
+1.31278	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	Number of Monomial Minusoids
+0	Order of Applicable
+0	Order of
+0	 Magnitude
+0	 Phase
+ 0	Angle of epoch where monomial is zero
+0	Order of Applicable
+0	Order of
+0	 Magnitude
+0	 Phase
+ 0	Angle of epoch where monomial is zero
+0	Order of Applicable
+0	Order of
+0	 Magnitude
+0	 Phase
+ 0	Angle of epoch where monomial is zero
+0	Order of Applicable
+0	Order of
+0	 Magnitude
+0	 Phase
+ 0	Angle of epoch where monomial is zero
+
+Yaw Angle
+0	Exponential Magnitude
+60	Exponential Time Constant
+0.00124848	Constant Mean Attitude Angle
+6	Number of Sinusoidals per Angle
+0.000419477	 Magnitude
+0.528791	 Phase
+ 0.000246176	 Magnitude
+2.08442	 Phase
+ 8.76417e-05	 Magnitude
+-0.25704	 Phase
+ 2.31896e-05	 Magnitude
+1.60042	 Phase
+ 2.89982e-05	 Magnitude
+0.91843	 Phase
+ 2.72212e-05	 Magnitude
+1.83606	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	Number of Monomial Minusoids
+0	Order of Applicable
+0	Order of
+0	 Magnitude
+0	 Phase
+ 0	Angle of epoch where monomial is zero
+0	Order of Applicable
+0	Order of
+0	 Magnitude
+0	 Phase
+ 0	Angle of epoch where monomial is zero
+0	Order of Applicable
+0	Order of
+0	 Magnitude
+0	 Phase
+ 0	Angle of epoch where monomial is zero
+0	Order of Applicable
+0	Order of
+0	 Magnitude
+0	 Phase
+ 0	Angle of epoch where monomial is zero
+
+Roll Misalignment
+0	Exponential Magnitude
+60	Exponential Time Constant
+2.475e-05	Constant Mean Attitude Angle
+6	Number of Sinusoidals per Angle
+7.98969e-05	 Magnitude
+2.7648	 Phase
+ 1.787e-05	 Magnitude
+0.745945	 Phase
+ 5.50538e-05	 Magnitude
+-0.99311	 Phase
+ 4.16809e-05	 Magnitude
+-1.81046	 Phase
+ 3.52208e-05	 Magnitude
+-0.632351	 Phase
+ 1.75618e-05	 Magnitude
+-2.59554	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	Number of Monomial Minusoids
+0	Order of Applicable
+0	Order of
+0	 Magnitude
+0	 Phase
+ 0	Angle of epoch where monomial is zero
+0	Order of Applicable
+0	Order of
+0	 Magnitude
+0	 Phase
+ 0	Angle of epoch where monomial is zero
+0	Order of Applicable
+0	Order of
+0	 Magnitude
+0	 Phase
+ 0	Angle of epoch where monomial is zero
+0	Order of Applicable
+0	Order of
+0	 Magnitude
+0	 Phase
+ 0	Angle of epoch where monomial is zero
+
+Pitch Misalignment
+0	Exponential Magnitude
+60	Exponential Time Constant
+-0.000434916	Constant Mean Attitude Angle
+6	Number of Sinusoidals per Angle
+0.000147543	 Magnitude
+0.0152119	 Phase
+ 8.3553e-05	 Magnitude
+-0.591949	 Phase
+ 2.8288e-05	 Magnitude
+-1.13856	 Phase
+ 2.95003e-05	 Magnitude
+1.41923	 Phase
+ 2.50923e-05	 Magnitude
+2.0504	 Phase
+ 1.06215e-05	 Magnitude
+2.47209	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	 Magnitude
+0	 Phase
+ 0	Number of Monomial Minusoids
+0	Order of Applicable
+0	Order of
+0	 Magnitude
+0	 Phase
+ 0	Angle of epoch where monomial is zero
+0	Order of Applicable
+0	Order of
+0	 Magnitude
+0	 Phase
+ 0	Angle of epoch where monomial is zero
+0	Order of Applicable
+0	Order of
+0	 Magnitude
+0	 Phase
+ 0	Angle of epoch where monomial is zero
+0	Order of Applicable
+0	Order of
+0	 Magnitude
+0	 Phase
+ 0	Angle of epoch where monomial is zero
+
+

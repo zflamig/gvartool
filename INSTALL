@@ -1,0 +1,11 @@
+
+Install externals libraries:
+
+   f2c
+   libjpeg
+   libtiff
+
+These libraries should be installed into /usr/local/lib
+
+
+
