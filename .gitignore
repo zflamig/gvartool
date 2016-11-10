@@ -1,0 +1,7 @@
+gvar
+mkdoc
+*.o
+makefiles/Linux_x86_64/Gimloc3.Om.c
+makefiles/Linux_x86_64/VERSION
+makefiles/Linux_x86_64/readme.h
+makefiles/Linux_x86_64/usage.h
