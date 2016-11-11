@@ -8,7 +8,7 @@ cc = gcc -Wall -W -D_LSBF_ -D_lsbf_
 
 CCFLAGS = -g -I. -I$D -I /usr/local/include
 
-F2CLIBS =  /usr/lib/libf2c.a
+F2CLIBS =  /usr/lib/x86_64-linux-gnu/libf2c.a
 
 IMAGELIBS = -ljpeg -ltiff
 
